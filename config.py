@@ -1,22 +1,32 @@
+# config.py
 import os
-from dotenv import load_dotenv
 import sys
+from dotenv import load_dotenv
 
-# Quiet gRPC + absl logging
+# --- Silence gRPC/absl noise BEFORE importing google.generativeai ---
 os.environ["GRPC_VERBOSITY"] = "ERROR"
 os.environ["GLOG_minloglevel"] = "3"
 
-# Redirect stderr to a file (so warnings/errors go there, not your console)
-sys.stderr = open("gemini_logs.txt", "w")
+# Log all stderr (warnings/errors) to a file instead of console
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+_log_path = os.path.join(LOG_DIR, "gemini_logs.txt")
+# Line-buffered text file so entries flush frequently
+sys.stderr = open(_log_path, mode="a", encoding="utf-8", buffering=1)
 
-import google.generativeai as genai
+import google.generativeai as genai  # noqa: E402  (import after env tweaks)
 
-# Load env vars
+# Load .env and configure API key
 load_dotenv()
-
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
     raise ValueError("Missing GEMINI_API_KEY in .env")
 
-# Configure Gemini once here
 genai.configure(api_key=API_KEY)
+
+# Default model for your helpers
+DEFAULT_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+
+def get_model(name: str | None = None) -> "genai.GenerativeModel":
+    """Return a configured GenerativeModel (defaults to fast/free-tier friendly)."""
+    return genai.GenerativeModel(name or DEFAULT_MODEL)

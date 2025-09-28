@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\main.py", line 55, in <module>
+    main()
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\main.py", line 36, in main
+    speak(full_text)
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\speak.py", line 40, in speak
+    _engine.runAndWait()
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\venv\Lib\site-packages\pyttsx3\engine.py", line 222, in runAndWait
+    self.proxy.runAndWait()
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\venv\Lib\site-packages\pyttsx3\driver.py", line 184, in runAndWait
+    self._driver.startLoop()
+  File "C:\Users\Rayyan\OneDrive\Desktop\Personal_projects\Jarvis\venv\Lib\site-packages\pyttsx3\drivers\sapi5.py", line 179, in startLoop
+    time.sleep(0.05)
+KeyboardInterrupt
