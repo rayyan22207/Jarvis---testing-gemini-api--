@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c1",
+    "title": "Django Channels",
+    "summary": "Adds ASGI support with WebSockets for real-time features.",
+    "tags": ["django", "websockets", "asgi"]
+  },
+  {
+    "id": "g1",
+    "title": "WebRTC Basics",
+    "summary": "WebRTC enables peer-to-peer media. Needs signaling, ICE, STUN/TURN.",
+    "tags": ["webrtc", "p2p", "ice", "stun", "turn"]
+  },
+  {
+    "id": "f1",
+    "title": "Firebase Pricing (LMS)",
+    "summary": "Free tier covers small auth/database use. Overages from reads/writes/storage.",
+    "tags": ["firebase", "pricing", "lms"]
+  }
+]
