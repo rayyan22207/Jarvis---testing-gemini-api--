@@ -3,6 +3,8 @@ venv/
 ENV/
 env/
 
+logs/
+
 # Python bytecode
 __pycache__/
 *.py[cod]
@@ -10,6 +12,8 @@ __pycache__/
 # Environment variables
 .env
 .env.*
+.txt
+*.log
 
 # VS Code settings
 .vscode/
